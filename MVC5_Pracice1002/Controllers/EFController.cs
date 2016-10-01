@@ -44,14 +44,29 @@ namespace MVC5_Pracice1002.Controllers
                 throw new Exception(" 驗證失敗:");
             }
 
+            var data = db.Product.OrderByDescending(p => p.ProductId).Take(5);
+            foreach(var item in data)
+            {
+                item.Price += 1;
+            }
+            db.SaveChanges();
 
-            return View(db.Product.OrderByDescending(p=>p.ProductId).ToList());
+            return View(data);
         }
 
         public ActionResult Detail(int id)
         {
             var product = db.Product.Where(p => p.ProductId == id).FirstOrDefault();
             return View(product);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var product = db.Product.Find(id);
+            db.Product.Remove(product);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
     }
