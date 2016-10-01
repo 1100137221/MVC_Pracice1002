@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC5_Pracice1002.Models;
+using System.Data.Entity.Validation;
 
 namespace MVC5_Pracice1002.Controllers
 {
@@ -21,7 +22,26 @@ namespace MVC5_Pracice1002.Controllers
                 Active = true
             });
 
-            db.SaveChanges();
+           
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach(DbEntityValidationResult item in ex.EntityValidationErrors)
+                {
+                    string entityName = item.Entry.Entity.GetType().Name;
+                    
+                    foreach(DbValidationError err in item.ValidationErrors)
+                    {
+                        throw new Exception(entityName + " 驗證失敗:" + err.ErrorMessage);
+                    }
+
+                }
+                throw new Exception(" 驗證失敗:");
+            }
+
 
             return View(db.Product.ToList());
         }
