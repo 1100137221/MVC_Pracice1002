@@ -29,5 +29,7 @@ namespace MVC5_Pracice1002.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MVC5_Pracice1002.Models.MemberViewModel> MemberViewModels { get; set; }
     }
 }
