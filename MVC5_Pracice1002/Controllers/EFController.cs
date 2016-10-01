@@ -10,10 +10,12 @@ namespace MVC5_Pracice1002.Controllers
 {
     public class EFController : Controller
     {
+        FabricsEntities db = new FabricsEntities();
+
         // GET: EF
         public ActionResult Index()
         {
-            var db = new FabricsEntities();
+            
 
             db.Product.Add(new Product() {
                 ProductName = "BMW",
@@ -43,7 +45,14 @@ namespace MVC5_Pracice1002.Controllers
             }
 
 
-            return View(db.Product.ToList());
+            return View(db.Product.OrderByDescending(p=>p.ProductId).ToList());
         }
+
+        public ActionResult Detail(int id)
+        {
+            var product = db.Product.Where(p => p.ProductId == id).FirstOrDefault();
+            return View(product);
+        }
+
     }
 }
