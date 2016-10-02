@@ -13,7 +13,7 @@ namespace MVC5_Pracice1002.Controllers
         FabricsEntities db = new FabricsEntities();
 
         // GET: EF
-        public ActionResult Index()
+        public ActionResult Index(bool? IsActive, string keyword)
         {
             
 
@@ -24,7 +24,17 @@ namespace MVC5_Pracice1002.Controllers
             //    Active = true
             //});
             
-            var data = db.Product.OrderByDescending(p => p.ProductId).Take(20);
+            var data = db.Product.OrderByDescending(p => p.ProductId).AsQueryable() ;
+
+            if (IsActive.HasValue)
+            {
+                data = data.Where(p => p.Active.HasValue ? p.Active.Value == IsActive : false);
+            }
+
+            if (!String.IsNullOrEmpty(keyword))
+            {
+                data = data.Where(p => p.ProductName.Contains(keyword));
+            }
 
             foreach (var item in data)
             {
