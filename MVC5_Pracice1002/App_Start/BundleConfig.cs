@@ -27,8 +27,7 @@ namespace MVC5_Pracice1002
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/AgnularJs").Include(
-            "~/Scripts/angular.js",
-            "~/Scripts/angular*"));
+            "~/Scripts/angular.js"));
         }
     }
 }

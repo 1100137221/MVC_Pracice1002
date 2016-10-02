@@ -1,13 +1,38 @@
 ﻿
 <h2>hello</h2>
-<button id="btnJsonTest">取得 JsonTest 資料</button>
+<div ng-app="MainApp" ng-controller="myCtrl" >
+    <button ng-click="get()">取得 JsonTest 資料</button>
+    <table>
+        <tr>
+            <th>ProductId</th>
+            <th>ProductName</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Active</th>
+        </tr>
+        <tr ng-repeat="item in data">
+            <td>{{item.ProductId}}</td>
+            <td>{{item.ProductName}}</td>
+            <td>{{item.Stock}}</td>
+            <td>{{item.Price}}</td>
+            <td>{{item.Active}}</td>
+        </tr>
+    </table>
+</div>
+
 
 @section Scripts{
 <script>
-    $("#btnJsonTest").click(function () {
-        $.getJSON('/VR/JsonTest', function (data) {
-            console.log(data);
-        })
+   
+    var app = angular.module("MainApp", []);
+    app.controller("myCtrl", function ($http,$scope) {
+        $scope.get = function () {
+            $http.get('/VR/JsonTest').then(function (result) {
+                $scope.data = result.data;
+            });
+        }
     });
+
+  
 </script>
 }
