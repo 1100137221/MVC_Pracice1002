@@ -95,7 +95,6 @@ namespace MVC5_Pracice1002.Controllers
                .Include(t => t.OrderLine)
                .Where(p => p.ProductId<num)
                .AsQueryable();
-
             return View(data);
         }
 

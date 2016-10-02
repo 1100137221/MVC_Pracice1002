@@ -249,6 +249,9 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>Fabrics.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Rule\Client.cs" />
+    <Compile Include="Models\Rule\Order.cs" />
+    <Compile Include="Models\Rule\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
