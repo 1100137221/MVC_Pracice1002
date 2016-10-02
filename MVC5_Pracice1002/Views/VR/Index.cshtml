@@ -1,0 +1,13 @@
+﻿
+<h2>hello</h2>
+<button id="btnJsonTest">取得 JsonTest 資料</button>
+
+@section Scripts{
+<script>
+    $("#btnJsonTest").click(function () {
+        $.getJSON('/VR/JsonTest', function (data) {
+            console.log(data);
+        })
+    });
+</script>
+}
