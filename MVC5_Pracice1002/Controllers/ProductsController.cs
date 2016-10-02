@@ -11,7 +11,7 @@ using MVC5_Pracice1002.Models;
 
 namespace MVC5_Pracice1002.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         private FabricsEntities db = new FabricsEntities();
         ProductRepository repo = RepositoryHelper.ProductRepository();
