@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVC5_Pracice1002.Models;
 using System.Data.Entity.Validation;
+using System.Data.Entity;
 
 namespace MVC5_Pracice1002.Controllers
 {
@@ -80,6 +81,22 @@ namespace MVC5_Pracice1002.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult QueryPlan(int num = 10)
+        {
+            /*var data = db.Database.SqlQuery<Product>(
+                @"SELECT * FROM dbo.Product WHERE ProductId< @p0",num
+                );*/
+            
+            /*var data = db.Product.Where(p => p.ProductId < num).ToList();*/
+
+            var data = db.Product
+               .Include(t => t.OrderLine)
+               .Where(p => p.ProductId<num)
+               .AsQueryable();
+
+            return View(data);
         }
 
     }

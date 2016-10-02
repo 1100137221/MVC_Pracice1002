@@ -342,6 +342,7 @@
     <Content Include="Views\Home\MemberProfile.cshtml" />
     <Content Include="Views\EF\Index.cshtml" />
     <Content Include="Views\EF\Detail.cshtml" />
+    <Content Include="Views\EF\QueryPlan.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
