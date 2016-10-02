@@ -15,7 +15,8 @@ namespace MVC5_Pracice1002.Models
     {
         [Required]
         public int ProductId { get; set; }
-        [Required(ErrorMessage ="產品名稱是必要欄位")]
+        //[Required(ErrorMessage ="產品名稱是必要欄位")]
+        [至少為一個空白字元Attribute(ErrorMessage ="至少包含一個空白字元")]
         public string ProductName { get; set; }
         [Required]
         [Range(2, 99, ErrorMessage = "商品價格必須介於 2~99 之間")]
