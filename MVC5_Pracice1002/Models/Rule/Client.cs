@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,6 +21,7 @@ namespace MVC5_Pracice1002.Models
         public string MiddleName { get; set; }
         [StringLength(40, ErrorMessage = "欄位長度不得大於 40 個字元")]
         public string LastName { get; set; }
+        [UIHint("性別")]
         [StringLength(1, ErrorMessage = "欄位長度不得大於 1 個字元")]
         public string Gender { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
