@@ -12,11 +12,6 @@ namespace MVC5_Pracice1002.Controllers
         {
             this.Redirect("/").ExecuteResult(this.ControllerContext);
         }
-
-        // GET: Base
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
     }
 }
