@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC5_Pracice1002.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,9 @@ namespace MVC5_Pracice1002.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string Name,DateTime Birthday)
+        public ActionResult Index(MemberViewModel data)
         {
-            return Content(Name + " " + Birthday);
+            return Content(data.Name + " " + data.Birthday);
         }
     }
 }

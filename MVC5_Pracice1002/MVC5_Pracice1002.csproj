@@ -245,6 +245,7 @@
       <DependentUpon>Fabrics.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\FVM\MemberViewModel.cs" />
+    <Compile Include="Models\FVM\Products批次更新VIewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Occupation.cs">
@@ -1135,7 +1136,6 @@
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\MemberProfile.cshtml" />
     <Content Include="Views\EF\Index.cshtml" />
@@ -1144,6 +1144,7 @@
     <Content Include="Views\VR\Index.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\MB\Index.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />

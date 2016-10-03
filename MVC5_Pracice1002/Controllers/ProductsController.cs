@@ -20,8 +20,28 @@ namespace MVC5_Pracice1002.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(repo.All());
+            return View(repo.All().Take(5));
         }
+
+        [HttpPost]
+        public ActionResult Index(IList<ProductsVIewModel> data)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach (var item in data)
+                {
+                    var product = repo.find(item.ProductId);
+                    product.Stock = item.Stock;
+                    product.Price = item.Price;
+                }
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(repo.All().Take(5));
+        }
+
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)
@@ -81,14 +101,19 @@ namespace MVC5_Pracice1002.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        public ActionResult Edit(int id,FormCollection form)
         {
-            if (ModelState.IsValid)
+
+            Product product = repo.find(id);
+
+            if(TryUpdateModel<Product>(product,new string[] {
+                 "ProductId","ProductName","Price","Active","Stock" }))
             {
-                db.Entry(product).State = EntityState.Modified;
+                TempData["ProductsEditDoneMsg"] = "商品編輯成功";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
             return View(product);
         }
 
