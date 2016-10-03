@@ -215,6 +215,8 @@
     <Compile Include="Controllers\MBController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\VRController.cs" />
+    <Compile Include="filter\ProcessTimeFilter.cs" />
+    <Compile Include="filter\ViewBagFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

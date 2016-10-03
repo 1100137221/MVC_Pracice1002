@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVC5_Pracice1002.filter;
 
 namespace MVC5_Pracice1002.Controllers
 {
+    [ProcessTimeFilter]
     public class HomeController : Controller
     {
+        [ViewBagFilter]
         public ActionResult Index()
         {
             return View();
         }
 
+        [ViewBagFilter]
         public ActionResult Test()
         {
             return View();
