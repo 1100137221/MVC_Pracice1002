@@ -18,15 +18,29 @@ namespace MVC5_Pracice1002.Controllers
 
 
         // GET: Products
-        public ActionResult Index(int? ProductId,string type)
+        public ActionResult Index(int? ProductId, string type, bool? isActive,string keyword)
         {
             ViewBag.type = type;
             if (ProductId.HasValue)
             {
                 ViewBag.SelectedProductId = ProductId.Value;
             }
+            var data = repo.All().Take(5);
+            if (isActive.HasValue)
+            {
+                data = data.Where(p => p.Active.HasValue && p.Active.Value == isActive.Value);
+            }
+            if (!String.IsNullOrEmpty(keyword))
+            {
+                data = data.Where(p => p.ProductName.Contains(keyword));
+            }
 
-            return View(repo.All().Take(5));
+            var item = new List<SelectListItem>();
+            item.Add(new SelectListItem() { Value = "true",Text="有效" });
+            item.Add(new SelectListItem() { Value = "false", Text = "無效" });
+            ViewData["isActive"] = new SelectList(item, "Value", "Text");
+
+            return View(data);
 
         }
 
