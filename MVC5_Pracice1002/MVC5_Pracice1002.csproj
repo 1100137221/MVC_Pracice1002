@@ -213,6 +213,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MBController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\OrderLinesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\VRController.cs" />
     <Compile Include="filter\ProcessTimeFilter.cs" />
@@ -1147,9 +1149,15 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\MB\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\OrderLines\Create.cshtml" />
+    <Content Include="Views\OrderLines\Delete.cshtml" />
+    <Content Include="Views\OrderLines\Details.cshtml" />
+    <Content Include="Views\OrderLines\Edit.cshtml" />
+    <Content Include="Views\OrderLines\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Member\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
