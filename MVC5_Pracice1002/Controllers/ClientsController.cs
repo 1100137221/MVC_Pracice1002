@@ -17,7 +17,7 @@ namespace MVC5_Pracice1002.Controllers
         // GET: Clients
         public ActionResult Index()
         {
-            var client = db.Client.Include(c => c.Occupation);
+            var client = db.Client.Include(c => c.Occupation).Take(10);
             return View(client.ToList());
         }
 
