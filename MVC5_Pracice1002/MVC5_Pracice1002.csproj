@@ -212,6 +212,7 @@
     <Compile Include="Controllers\EFController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MBController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\VRController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1142,6 +1143,7 @@
     <Content Include="Views\EF\QueryPlan.cshtml" />
     <Content Include="Views\VR\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\MB\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
