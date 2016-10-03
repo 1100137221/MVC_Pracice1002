@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Edi.Web.MvcExtensions, Version=5.2.3.1, Culture=neutral, PublicKeyToken=8a476f025a04049b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Edi.Web.MvcExtensions.5.2.3.1\lib\net45\Edi.Web.MvcExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>

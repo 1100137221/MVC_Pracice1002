@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    var data = Model as IPagedList;
 }
 
 <h2>Index</h2>
@@ -9,6 +10,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@Html.PagedListPager(data, p => Url.Action("Index", new { pageNo = p }))
 <table class="table">
     <tr>
         <th>
