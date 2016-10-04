@@ -11,6 +11,8 @@ namespace MVC5_Pracice1002
         {
             // Web API 設定和服務
 
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            
             // Web API 路由
             config.MapHttpAttributeRoutes();
 
