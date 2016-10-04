@@ -35,29 +35,29 @@ namespace MVC5_Pracice1002.Controllers
                 data = data.Where(p => p.ProductName.Contains(keyword));
             }
 
-            var item = new List<SelectListItem>();
-            item.Add(new SelectListItem() { Value = "true",Text="有效" });
-            item.Add(new SelectListItem() { Value = "false", Text = "無效" });
-            ViewData["isActive"] = new SelectList(item, "Value", "Text");
+            //var item = new List<SelectListItem>();
+            //item.Add(new SelectListItem() { Value = "true",Text="有效" });
+            //item.Add(new SelectListItem() { Value = "false", Text = "無效" });
+            //ViewData["isActive"] = new SelectList(item, "Value", "Text");
 
             return View(data);
 
         }
 
         [HttpPost]
-        public ActionResult Index(IList<ProductsVIewModel> data)
+        public ActionResult Index(List<ProductBatchUpdateViewModel> products)
         {
             if (ModelState.IsValid)
             {
-                foreach (var item in data)
+                foreach (var item in products)
                 {
-                    var product = repo.find(item.ProductId);
-                    product.Stock = item.Stock;
-                    product.Price = item.Price;
+                    var pp = repo.find(item.ProductId);
+                    pp.Stock = item.Stock;
+                    pp.ProductName = item.ProductName;
                 }
 
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index","Products");
             }
 
             return View(repo.All().Take(5));

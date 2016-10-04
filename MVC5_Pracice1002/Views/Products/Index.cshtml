@@ -11,7 +11,7 @@
     <p>
         @Html.ActionLink("Create New", "Create")
 
-        @Html.DropDownList("isActive", null, "--是否有效--", new { onchange = "this.form.submit();" })
+        @*@Html.DropDownList("isActive", null, "--是否有效--", new { onchange = "this.form.submit();" })*@
 
         @Html.TextBox("keyword", null, new { onchange = "this.form.submit();" })
 
@@ -32,12 +32,8 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Stock)
             </th>
-            <th></th>
         </tr>
         @*
             data[0].ProductId
@@ -47,35 +43,30 @@
         *@
 
         @{
-            var data = Model.ToArray();
+            var products = Model.ToArray();
         }
-        @for (var i = 0; i < data.Length; i++)
+        @for (var i = 0; i < products.Length; i++)
         {
-            @Html.HiddenFor(modelItem => data[i].ProductId)
-            if (ViewBag.SelectedProductId != null && ViewBag.SelectedProductId == data[i].ProductId)
+            @Html.HiddenFor(modelItem => products[i].ProductId)
+            if (ViewBag.SelectedProductId != null && ViewBag.SelectedProductId == products[i].ProductId)
             {
-                ViewBag.SelectedProductItem = data[i];
+                ViewBag.SelectedProductItem = products[i];
             }
-            <tr @if (ViewBag.SelectedProductId != null && ViewBag.SelectedProductId == data[i].ProductId) { @Html.Raw("style='background-color: lightyellow;'")  }>
+            <tr @if (ViewBag.SelectedProductId != null && ViewBag.SelectedProductId == products[i].ProductId) { @Html.Raw("style='background-color: lightyellow;'")  }>
                 <td>
-                    @Html.DisplayFor(modelItem => data[i].ProductName)
+                    @Html.EditorFor(modelItem => products[i].ProductName)
                 </td>
                 <td>
-                    @Html.EditorFor(modelItem => data[i].Price)<br />
-                    @Html.ValidationMessageFor(modelItem => data[i].Price)
+                    NT$ @String.Format("{0:#,#}", products[i].Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => data[i].Active)
+                    @Html.EditorFor(modelItem => products[i].Stock)
                 </td>
                 <td>
-                    @Html.EditorFor(modelItem => data[i].Stock)<br />
-                    @Html.ValidationMessageFor(modelItem => data[i].Stock)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = data[i].ProductId }) |
-                    @Html.ActionLink("Details", "Index", new { type = "Details", ProductId = data[i].ProductId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = data[i].ProductId }) |
-                    @Html.ActionLink("OrderLines", "Index", new { type = "OrderLines", ProductId = data[i].ProductId })
+                    @Html.ActionLink("Edit", "Edit", new { id = products[i].ProductId }) |
+                    @Html.ActionLink("Details", "Index", new { type = "Details", ProductId = products[i].ProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = products[i].ProductId }) |
+                    @Html.ActionLink("OrderLines", "Index", new { type = "OrderLines", ProductId = products[i].ProductId })
                 </td>
             </tr>
         }
