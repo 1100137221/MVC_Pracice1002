@@ -40,7 +40,7 @@ namespace MVC5_Pracice1002.Controllers
             //item.Add(new SelectListItem() { Value = "false", Text = "無效" });
             //ViewData["isActive"] = new SelectList(item, "Value", "Text");
 
-            return View(data);
+            return View(data.OrderByDescending(p=>p.ProductId));
 
         }
 
@@ -56,8 +56,8 @@ namespace MVC5_Pracice1002.Controllers
                     pp.ProductName = item.ProductName;
                 }
 
-                db.SaveChanges();
-                //return RedirectToAction("Index","Products");
+                repo.UnitOfWork.Commit();
+                return RedirectToAction("Index","Products");
             }
 
             return View(repo.All().Take(5));
@@ -94,8 +94,10 @@ namespace MVC5_Pracice1002.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Product.Add(product);
-                db.SaveChanges();
+                repo.Add(product);
+                repo.UnitOfWork.Commit();
+                //db.Product.Add(product);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

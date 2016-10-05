@@ -12,7 +12,7 @@ using MVC5_Pracice1002.Models;
 
 namespace MVC5_Pracice1002.Controllers
 {
-    [RoutePrefix("products")]
+    [RoutePrefix("products1")]
     public class Products1Controller : ApiController
     {
         private FabricsEntities db = new FabricsEntities();

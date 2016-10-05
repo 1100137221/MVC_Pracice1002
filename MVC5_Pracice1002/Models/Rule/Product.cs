@@ -7,20 +7,28 @@ using System.Web;
 namespace MVC5_Pracice1002.Models
 {
     [MetadataType(typeof(ProductMetaData))]
-    public partial class Product : IValidatableObject
+    public partial class Product //: IValidatableObject
     {
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if(this.Stock>10 && this.Price < 100)
-            {
-                yield return new ValidationResult("價格設定錯誤", new String[] { "Price" });
-            }
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    if (this.ProductId == default(int))
+        //    {
+        //        //Create Data Only
+        //    }else
+        //    {
+        //        //Update Data Only
+        //    }
 
-            if(this.Stock < 5)
-            {
-                yield return new ValidationResult("庫存量過低，無法新增商品", new String[] { "Stock" });
-            }
-        }
+        //    //if(this.Stock>10 && this.Price < 100)
+        //    //{
+        //    //    yield return new ValidationResult("價格設定錯誤", new String[] { "Price" });
+        //    //}
+
+        //    //if(this.Stock < 5)
+        //    //{
+        //    //    yield return new ValidationResult("庫存量過低，無法新增商品", new String[] { "Stock" });
+        //    //}
+        //}
     }
 
     public partial class ProductMetaData

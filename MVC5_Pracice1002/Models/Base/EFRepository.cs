@@ -9,14 +9,16 @@ namespace MVC5_Pracice1002.Models
 {
     public class EFRepository<T> : IRepository<T> where T : class
     {
-        //public IUnitOfWork UnitOfWork { get; set; }
+        public IUnitOfWork UnitOfWork { get; set; }
         private IDbSet<T> _objectset;
         private IDbSet<T> ObjectSet
         {
             get
             {
-                var entity = new FabricsEntities();
-                _objectset = entity.Set<T>();
+                if (_objectset == null)
+                {
+                    _objectset = UnitOfWork.context.Set<T>();
+                }
                 return _objectset;
             }
         }

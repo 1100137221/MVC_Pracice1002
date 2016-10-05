@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MVC5_Pracice1002.Models
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         DbContext context { get; set; }
  		void Commit();

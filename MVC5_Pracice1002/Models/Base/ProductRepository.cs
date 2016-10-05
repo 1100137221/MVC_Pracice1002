@@ -11,12 +11,7 @@ namespace MVC5_Pracice1002.Models
         {
             return base.All().FirstOrDefault(p => p.ProductId == id);
         }
-
-        public void SavaChange()
-        {
-            
-        }
-
+        
     }
 
     public interface IProductRepository : IRepository<Product>
