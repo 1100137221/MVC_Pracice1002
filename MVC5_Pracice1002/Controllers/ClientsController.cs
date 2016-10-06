@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5_Pracice1002.Models;
-using Edi.Web.MVCExtensions.PagedList;
+using PagedList;
 
 namespace MVC5_Pracice1002.Controllers
 {

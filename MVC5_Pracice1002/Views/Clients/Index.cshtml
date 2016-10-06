@@ -6,11 +6,11 @@
 }
 
 <h2>Index</h2>
-
+<link type="text/css" href="@Url.Content("~/Content/PagedList.css")"  />
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@Html.PagedListPager(data, p => Url.Action("Index", new { pageNo = p }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing("#main"))
+@Html.PagedListPager(data, p => Url.Action("Index", new { pageNo = p }))
 <table class="table">
     <tr>
         <th>
